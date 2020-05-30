@@ -96,32 +96,12 @@ int check(char sign)
 void main()
 {
   int i,j,posn,start,win;
+  printf("\n\t\t\t\tTIC TAC TOE\n");
   layout();
-  
-  /*
-  for(i=0;i<5;i++)
-  {
-    for(j=0;j<5;j++)
-    {
-      if(i==0)
-      {
-        printf("* ");
-        
-      }
-      else if(j==2)
-      {
-        printf("*");
-      }
-      else
-      {
-        printf("  ");
-      }
-    }
-    printf("\n\t\t\t\t");
-  }
  
  
- */
+ 
+ 
    enterstart:
    printf("\n\nwho will start first 1 or 2:\n");
    scanf("%d",&start);
@@ -135,10 +115,16 @@ void main()
    {
      if((i+start)%2!=0)
      {
-       printf("player1 chance\nenter position: ");
+       enterposn1:
+       printf("\nplayer1 chance\nenter position: ");
        scanf("%d",&posn);
+       if(posn<1 || posn>9)
+       {
+         printf("\nentered wrong posn\n");
+          goto enterposn1;
+       }
        put_sign(posn,'X');
-       clrscr();
+       
        layout();
        win = check('X');
        if(win)
@@ -148,10 +134,16 @@ void main()
      }
      else
      {
-       printf("player2 chance\nenter position: ");
+       enterposn2:
+       printf("\nplayer2 chance\nenter position: ");
        scanf("%d",&posn);
+       if(posn<1 || posn>9)
+       {
+         printf("\nentered wrong posn\n");
+          goto enterposn2;
+       }
        put_sign(posn,'O');
-       clrscr();
+       
        layout();
        win = check('O');
        if(win)
